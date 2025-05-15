@@ -16,7 +16,7 @@ export default function App() {
 
         const detailedCharacters = await Promise.all(
           data.results.map(async (character, index) => {
-            // Add 'index' as the second parameter
+            // Add 'index' as the second parameters
             const characterResponse = await fetch(character.url)
             const characterData = await characterResponse.json()
             return {
