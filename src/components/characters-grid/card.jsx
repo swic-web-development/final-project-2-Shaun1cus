@@ -5,6 +5,7 @@ export default function Card({ character }) {
       <h2 className="text-xl font-bold">{character.name}</h2>
       <p className="text-gray-400">{character.species}</p>
       <p className="text-gray-400">{character.status}</p>
+      <p className="text-gray-400">{character.gender}</p>
     </div>
   )
 }

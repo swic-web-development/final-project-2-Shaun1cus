@@ -21,6 +21,7 @@ export default function App() {
               image: characterData.image,
               species: characterData.species,
               status: characterData.status,
+              gender: characterData.gender,
             }
           }),
         )
