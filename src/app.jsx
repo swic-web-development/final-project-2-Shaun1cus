@@ -15,7 +15,13 @@ export default function App() {
           data.results.map(async (character) => {
             const characterResponse = await fetch(character.url)
             const characterData = await characterResponse.json()
-            return characterData.result.properties
+            return {
+              id: characterData.id,
+              name: characterData.name,
+              image: characterData.image,
+              species: characterData.species,
+              status: characterData.status,
+            }
           }),
         )
 
@@ -25,6 +31,7 @@ export default function App() {
         console.error('Error fetching characters:', error)
       }
     }
+
     fetchCharacters()
   }, [])
 
@@ -32,7 +39,6 @@ export default function App() {
     <main className="min-h-screen bg-black p-6 text-white">
       <Header />
       <CharactersGrid characters={characters} />
-      <h1 className="text-3xl text-red-500">Aww, geez...</h1>
     </main>
   )
 }
