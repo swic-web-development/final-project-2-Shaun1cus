@@ -1,9 +1,11 @@
 import Header from './components/header'
 import CharactersGrid from './components/characters-grid'
+import SearchBar from './components/search-bar.jsx'
 import { useState, useEffect } from 'react'
 
 export default function App() {
   const [characters, setCharacters] = useState([])
+  const [searchQuery, setSearchQuery] = useState('')
 
   useEffect(() => {
     async function fetchCharacters() {
@@ -27,7 +29,6 @@ export default function App() {
         )
 
         setCharacters(detailedCharacters)
-        console.log(detailedCharacters)
       } catch (error) {
         console.error('Error fetching characters:', error)
       }
@@ -36,10 +37,15 @@ export default function App() {
     fetchCharacters()
   }, [])
 
+  const filteredCharacters = characters.filter((character) =>
+    character.name.toLowerCase().includes(searchQuery.toLowerCase()),
+  )
+
   return (
     <main className="min-h-screen bg-black p-6 text-white">
       <Header />
-      <CharactersGrid characters={characters} />
+      <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+      <CharactersGrid characters={filteredCharacters} />
     </main>
   )
 }
