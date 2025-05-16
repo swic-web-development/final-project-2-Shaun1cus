@@ -8,14 +8,10 @@ export default function CharactersGrid({ characters, moveUp, moveDown }) {
           key={character.id}
           className="flex items-center justify-between rounded bg-gray-800 p-4"
         >
-          <div className="flex items-center gap-4">
-            <img src={character.image} alt={character.name} className="h-16 w-16 rounded" />
-            <div>
-              <h3 className="text-lg font-bold">{character.name}</h3>
-              <p className="text-sm">{character.species}</p>
-            </div>
+          <div className="flex-1">
+            <Card character={character} />
           </div>
-          <div className="flex flex-col items-center">
+          <div className="ml-4 flex flex-col items-center">
             <button
               onClick={() => moveUp(character.id)}
               className="text-green-500 hover:text-green-300"
