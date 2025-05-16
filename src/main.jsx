@@ -8,3 +8,8 @@ createRoot(document.getElementById('root')).render(
     <App />
   </StrictMode>,
 )
+
+// Starts the React application and renders it into index.html
+
+// The StrictMode component is a wrapper that helps identify potential
+// problems in an application.

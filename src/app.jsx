@@ -4,6 +4,7 @@ import SearchBar from './components/search-bar.jsx'
 import { moveUp, moveDown } from './components/ranking'
 import { useState, useEffect } from 'react'
 
+// App function used to fetch and display character information
 export default function App() {
   const [characters, setCharacters] = useState([])
   const [searchQuery, setSearchQuery] = useState('')
@@ -16,7 +17,6 @@ export default function App() {
 
         const detailedCharacters = await Promise.all(
           data.results.map(async (character, index) => {
-            // Add 'index' as the second parameters
             const characterResponse = await fetch(character.url)
             const characterData = await characterResponse.json()
             return {
@@ -26,7 +26,7 @@ export default function App() {
               species: characterData.species,
               status: characterData.status,
               gender: characterData.gender,
-              rank: index + 1, // Use the index here
+              rank: index + 1,
             }
           }),
         )
